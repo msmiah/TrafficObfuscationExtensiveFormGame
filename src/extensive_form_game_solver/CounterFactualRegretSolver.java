@@ -1,0 +1,352 @@
+package extensive_form_game_solver;
+
+import java.util.Arrays;
+
+import org.apache.commons.math3.distribution.UniformRealDistribution;
+
+import extensive_form_game.GameGenerator;
+import extensive_form_game.GameState;
+import gnu.trove.map.TIntDoubleMap;
+import gnu.trove.map.hash.TIntDoubleHashMap;
+
+public class CounterFactualRegretSolver extends ZeroSumGameSolver {
+	int numNodesTouched;
+	int nature = 0;
+	int player1 = 1;
+	int player2 = 2;
+	
+	int totalIterationsRun = 0;
+	
+	double[][][] averagedStrategy;
+	double[][][] currentStrategy;
+	double[][][] regretTable;
+	double[][] informationSetProbabilityForPlayer;
+	final UniformRealDistribution distribution = new UniformRealDistribution(0, 1);
+
+	public CounterFactualRegretSolver (GameGenerator game) {
+		super(game);
+		setNumNodesTouched(0); // this is set in the constructor to signify that it changes as we run more iterations
+		initializeDataStructures();
+	}
+
+	@Override
+	public void solveGame() {
+		solveGame(10);
+	}
+
+	public void solveGame(int numIterations) {
+		runCFR(numIterations);
+	}
+
+	@Override
+	public void printStrategyVarsAndGameValue() {
+		// TODO Auto-generated method stub
+		
+	}
+
+	@Override
+	public void printGameValue() {
+		// TODO Auto-generated method stub
+		
+	}
+
+	@Override
+	public double getValueOfGame() {
+		return game.computeGameValueForStrategies(getStrategyProfile());
+	}
+	
+	
+	public TIntDoubleMap[] getInformationSetActionProbabilitiesByActionId() {
+		return getInformationSetActionProbabilitiesByActionId(1);
+	}
+
+	public TIntDoubleMap[] getInformationSetActionProbabilitiesByActionId(int player) {
+		int numInformationSets = game.getNumInformationSets(player);
+		TIntDoubleMap[] map = new TIntDoubleHashMap[numInformationSets];
+		for (int informationSetId = 0; informationSetId < numInformationSets; informationSetId++) {
+			int abstractInformationSetId = game.getAbstractInformationSetId(player, informationSetId);
+			
+			map[informationSetId] = new TIntDoubleHashMap();
+			double sum = 0;
+			for (int actionId = 0; actionId < game.getNumActionsAtInformationSet(player, informationSetId); actionId++) {
+				int abstractActionId = game.getAbstractActionMapping(player, informationSetId, actionId);
+				sum += averagedStrategy[player][abstractInformationSetId][abstractActionId]; 
+			}
+			
+			for (int actionId = 0; actionId < game.getNumActionsAtInformationSet(player, informationSetId); actionId++) {
+				int abstractActionId = game.getAbstractActionMapping(player, informationSetId, actionId);
+				if (sum > 0) {
+					map[informationSetId].put(actionId, averagedStrategy[player][game.getAbstractInformationSetId(player, informationSetId)][abstractActionId] / sum);
+				} else {
+					map[informationSetId].put(actionId, 0);
+				}
+			}
+		}
+		return map;
+	}
+
+	@Override
+	public double[][][] getStrategyProfile() {
+		double[][][] map = new double[3][][];
+		for (int player =1; player < 3; player++) {
+			int numInformationSets = game.getNumInformationSets(player);
+			map[player] = new double[numInformationSets][];
+			for (int informationSetId = 0; informationSetId < numInformationSets; informationSetId++) {
+				int abstractInformationSetId = game.getAbstractInformationSetId(player, informationSetId);
+
+				map[player][informationSetId] = new double[game.getNumActionsAtInformationSet(player, informationSetId)];
+				double sum = 0;
+				for (int actionId = 0; actionId < game.getNumActionsAtInformationSet(player, informationSetId); actionId++) {
+					int abstractActionId = game.getAbstractActionMapping(player, informationSetId, actionId);
+					sum += averagedStrategy[player][abstractInformationSetId][abstractActionId]; 
+				}
+
+				for (int actionId = 0; actionId < game.getNumActionsAtInformationSet(player, informationSetId); actionId++) {
+					int abstractActionId = game.getAbstractActionMapping(player, informationSetId, actionId);
+					if (sum > 0) {
+						map[player][informationSetId][actionId] = averagedStrategy[player][game.getAbstractInformationSetId(player, informationSetId)][abstractActionId] / sum;
+					} else {
+						map[player][informationSetId][actionId] = 0;
+					}
+
+				//	System.out.println(averagedStrategy[player][game.getAbstractInformationSetId(player, informationSetId)][abstractActionId] + " :  "
+					//		+ map[player][informationSetId][actionId]);
+					
+				}
+			}
+		}
+		return map;
+	}
+	
+	
+	private void initializeDataStructures() {
+		// Initialize the tables for each player
+		averagedStrategy = new double[3][][];
+		currentStrategy = new double[3][][];
+		regretTable = new double[3][][];
+		informationSetProbabilityForPlayer = new double[3][];
+
+		
+		// Initialize over information sets for each player
+		int numInfoSetsP1 = game.getNumInformationSets(1);
+		int numInfoSetsP2 = game.getNumInformationSets(2);
+		averagedStrategy[player1] = new double[numInfoSetsP1][];
+		averagedStrategy[player2] = new double[numInfoSetsP2][];
+		currentStrategy[player1] = new double[numInfoSetsP1][];
+		currentStrategy[player2] = new double[numInfoSetsP2][];
+		regretTable[player1] = new double[numInfoSetsP1][];
+		regretTable[player2] = new double[numInfoSetsP2][];
+		informationSetProbabilityForPlayer[player1] = new double[numInfoSetsP1];
+		informationSetProbabilityForPlayer[player2] = new double[numInfoSetsP2];
+		
+		// This currently assumes that information set IDs are consecutively numbered starting from 0
+		// Initialize each information set for Player 1
+		for (int informationSetId = 0; informationSetId < numInfoSetsP1; informationSetId++) {
+			if (game.informationSetAbstracted(player1, informationSetId)) {
+				continue;
+			}
+			int numActions = game.getNumActionsAtInformationSet(1, informationSetId);
+			averagedStrategy[1][informationSetId] = new double[numActions]; 
+			//Arrays.fill(averagedStrategy[1][informationSetId], 1.0 / numActions);
+			currentStrategy[1][informationSetId] = new double[numActions];
+			Arrays.fill(currentStrategy[1][informationSetId], 1.0 / numActions);
+			regretTable[1][informationSetId] = new double[numActions]; 
+		}
+		// Initialize each information set for Player 2
+		for (int informationSetId = 0; informationSetId < numInfoSetsP2; informationSetId++) {
+			if (game.informationSetAbstracted(player2, informationSetId)) {
+				continue;
+			}
+			int numActions = game.getNumActionsAtInformationSet(2, informationSetId);
+			averagedStrategy[2][informationSetId] = new double[numActions]; 
+			//Arrays.fill(averagedStrategy[2][informationSetId], 1.0 / numActions);
+			currentStrategy[2][informationSetId] = new double[numActions]; 
+			Arrays.fill(currentStrategy[2][informationSetId], 1.0 / numActions);
+			regretTable[2][informationSetId] = new double[numActions]; 
+		}
+	}
+	
+	
+	public void runCFR(int iterations) {
+		totalIterationsRun += iterations;
+		// TODO update existing averagedStrategy
+		for (int iteration = 0; iteration < iterations; iteration++) {
+			Arrays.fill(informationSetProbabilityForPlayer[1], 0);
+			Arrays.fill(informationSetProbabilityForPlayer[2], 0);
+			GameState gs = game.getInitialGameState();
+			traverseGameState(gs);
+			regretMatch();
+		}
+	}
+
+	/**
+	 * Dispatch method for performing an iteration. 
+	 * @param player
+	 * @param gs
+	 * @param iteration
+	 * @return
+	 */
+	private double[] traverseGameState(GameState gs) {
+		//System.out.println("Val : " + gs.getCurrentPlayer());
+		numNodesTouched++;
+		if (gs.isLeaf()) {
+			double[] plaerValues = {0,0};
+			plaerValues[0] = gs.getValueP1();
+			plaerValues[1] = gs.getValueP2();
+			return plaerValues;
+		} else if (gs.getCurrentPlayer() == nature){
+			double[] value = {0,0};
+			for (int action = 0; action < game.getNumActionsForNature(gs); action++) {
+				double probabilityOfAction = getProbabilityOfAction(gs, action);
+				game.updateGameStateWithAction(gs, action, probabilityOfAction);
+				double[] resValue = traverseGameState(gs);
+				value[0] += probabilityOfAction * resValue[0];
+				value[1] += probabilityOfAction * resValue[1];
+				game.removeActionFromGameState(gs, action, nature);
+			}
+			return value;
+		} else {
+			return traversePlayerGameState(gs);
+		}
+	}
+
+	/**
+	 * Perform iteration for non-nature player. This updates regrets.
+	 * @param player
+	 * @param gs
+	 * @param iteration
+	 * @return
+	 */
+	private double[] traversePlayerGameState(GameState gs) {
+		int numActions = game.getNumActionsAtInformationSet(gs);
+		int currentPlayer = gs.getCurrentPlayer();
+		
+		double[] sumOfUtilities = {0, 0};
+		double[] actionUtilitiesP1 = new double[numActions];
+		double[] actionUtilitiesP2 = new double[numActions];
+		
+		for (int originalAction = 0; originalAction < numActions; originalAction++) {
+			int abstractAction = game.getAbstractActionMapping(gs, originalAction);
+			// use the abstract action probability
+			double probabilityOfAction = getProbabilityOfAction(gs, abstractAction);
+			// take original action in game tree
+			game.updateGameStateWithAction(gs, originalAction, probabilityOfAction);
+			// treat as abstract action when calculating regrets
+			System.out.println("Cur p : " + currentPlayer);
+			double[] pValues = traverseGameState(gs);
+			actionUtilitiesP1[abstractAction] = pValues[0];
+			actionUtilitiesP2[abstractAction] = pValues[1];
+			// remove original action from game tree
+			game.removeActionFromGameState(gs, originalAction, currentPlayer);
+			// treat as abstract action when calculating regrets
+			sumOfUtilities[0] += probabilityOfAction * actionUtilitiesP1[abstractAction];
+			sumOfUtilities[1] += probabilityOfAction * actionUtilitiesP2[abstractAction];
+		}
+		// Perform second loop to update regret table, redundant check for whether player is nature
+		if (gs.getCurrentPlayer() != nature) {
+			int utilityMultiplier = currentPlayer == player1 ? 1 : 1;
+			for (int originalAction = 0; originalAction < numActions; originalAction++) {
+				int informationSetId = gs.getCurrentInformationSetId();
+				// treat as abstract action when calculating regrets
+				int action = game.getAbstractActionMapping(gs, originalAction);
+				if(currentPlayer == player1)
+					regretTable[currentPlayer][gs.getCurrentInformationSetId()][action] += utilityMultiplier * gs.getProbabilityWithoutPlayer(currentPlayer) * (actionUtilitiesP1[action] - sumOfUtilities[0]);
+				else
+					regretTable[currentPlayer][gs.getCurrentInformationSetId()][action] += utilityMultiplier * gs.getProbabilityWithoutPlayer(currentPlayer) * (actionUtilitiesP2[action] - sumOfUtilities[1]);
+					
+				// TODO should this be a sum of some sorts? Imperfect recall may cause some funky behavior
+				informationSetProbabilityForPlayer[currentPlayer][gs.getCurrentInformationSetId()] += gs.getProbabilityWithPlayer(currentPlayer);
+			}
+		}
+
+		return sumOfUtilities;
+	}
+	
+
+	/**
+	 * Updates the current strategy for gs.getCurrentPlayer() based on the regret tables
+	 * @param gs
+	 */
+	private void regretMatch() {
+		for (int player = 1; player < 3; player++) {
+			for (int informationSetId = 0; informationSetId < game.getNumInformationSets(player); informationSetId++) {
+				// We only need to update regret for abstracted information sets
+				if (game.informationSetAbstracted(player, informationSetId)) {
+					continue;
+				}
+				
+				double regretSum = 0;
+				int numActions = game.getNumActionsAtInformationSet(player, informationSetId);
+				//System.out.println("Num of action" + numActions);
+				for (int action = 0; action < numActions; action++) {
+					regretSum += Math.max(0, regretTable[player][informationSetId][action]);
+					averagedStrategy[player][informationSetId][action] += informationSetProbabilityForPlayer[player][informationSetId] * currentStrategy[player][informationSetId][action];
+				}
+				
+				double probabilitySum = 0;
+				for (int action = 0; action < numActions; action++) {
+					if (regretSum > 0) {
+						currentStrategy[player][informationSetId][action] = Math.max(0, regretTable[player][informationSetId][action]) / regretSum;
+					} else {
+						currentStrategy[player][informationSetId][action] = 1.0 / numActions;
+					}
+					probabilitySum += currentStrategy[player][informationSetId][action];
+				}
+				assert probabilitySum > 0.99999999 && probabilitySum < 1.00000001;
+			}
+		}
+	}
+
+	/**
+	 * Uses gs.getCurrentInformationSetId() to look up the information set id, which will pull the abstracted information set if an abstraction is used.
+	 * However, action is assumed to be the correct one, so no abstraction map lookup is done. Thus, calling methods should performing mapping if needed.
+	 * Consider changing this in the future.
+	 * @param gs
+	 * @param action The action for which the probability is desired, explicitly looked up, with no abstraction mapping performed.
+	 * @return
+	 */
+	// 
+	private double getProbabilityOfAction(GameState gs, int action) {
+		if (gs.getCurrentPlayer() == nature) {
+			try {
+				return game.getProbabilityOfNatureAction(gs, action);
+			} catch (Exception e) {
+				e.printStackTrace();
+			}
+		} else {
+			return currentStrategy[gs.getCurrentPlayer()][gs.getCurrentInformationSetId()][action];
+		}
+		return 0; // failure
+	}
+
+	public int getNumNodesTouched() {
+		return numNodesTouched;
+	}
+
+	public void setNumNodesTouched(int numNodesTouched) {
+		this.numNodesTouched = numNodesTouched;
+	}
+
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

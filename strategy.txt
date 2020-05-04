@@ -1,0 +1,346 @@
+...............Defender's strategy................
+I_root: 	1.0
+I:0  action:3.2,0.9: 	0.0
+I:0  action:3.2,1.0: 	0.0
+I:0  action:3.2,0.8: 	0.0
+I:0  action:3.3,0.9: 	0.0
+I:0  action:3.3,1.0: 	0.0
+I:0  action:3.3,0.8: 	0.0
+I:0  action:3.1,0.9: 	0.0
+I:0  action:3.1,1.0: 	0.0
+I:0  action:3.1,0.8: 	1.0
+I:0  action:3.2,1.1: 	0.0
+I:0  action:3.2,0.7: 	0.0
+I:0  action:3.3,1.1: 	0.0
+I:0  action:3.3,0.7: 	0.0
+I:0  action:3.1,1.1: 	0.0
+I:0  action:3.1,0.7: 	0.0
+I:0  action:3.2,1.2: 	0.0
+I:0  action:3.2,0.6: 	0.0
+I:0  action:3.3,1.2: 	0.0
+I:0  action:3.3,0.6: 	0.0
+I:0  action:3.1,1.2: 	0.0
+I:0  action:3.1,0.6: 	0.0
+I:0  action:3.4,0.9: 	0.0
+I:0  action:3.4,1.0: 	0.0
+I:0  action:3.4,0.8: 	0.0
+I:0  action:3.0,0.9: 	0.0
+I:0  action:3.0,1.0: 	0.0
+I:0  action:3.0,0.8: 	0.0
+I:0  action:3.4,1.1: 	0.0
+I:0  action:3.4,0.7: 	0.0
+I:0  action:3.0,1.1: 	0.0
+I:0  action:3.0,0.7: 	0.0
+I:0  action:3.4,1.2: 	0.0
+I:0  action:3.4,0.6: 	0.0
+I:0  action:3.0,1.2: 	0.0
+I:0  action:3.0,0.6: 	0.0
+I:0  action:3.5,0.9: 	0.0
+I:0  action:3.5,1.0: 	0.0
+I:0  action:3.5,0.8: 	0.0
+I:0  action:2.9,0.9: 	0.0
+I:0  action:2.9,1.0: 	0.0
+I:0  action:2.9,0.8: 	0.0
+I:0  action:3.5,1.1: 	0.0
+I:0  action:3.5,0.7: 	0.0
+I:0  action:2.9,1.1: 	0.0
+I:0  action:2.9,0.7: 	0.0
+I:0  action:3.5,1.2: 	0.0
+I:0  action:3.5,0.6: 	0.0
+I:0  action:2.9,1.2: 	0.0
+I:0  action:2.9,0.6: 	0.0
+I:1  action:3.0,0.7: 	0.0
+I:1  action:3.0,0.8: 	0.0
+I:1  action:3.0,0.6: 	0.0
+I:1  action:3.1,0.7: 	0.0
+I:1  action:3.1,0.8: 	1.0
+I:1  action:3.1,0.6: 	0.0
+I:1  action:2.9,0.7: 	0.0
+I:1  action:2.9,0.8: 	0.0
+I:1  action:2.9,0.6: 	0.0
+I:1  action:3.0,0.9: 	0.0
+I:1  action:3.0,0.5: 	0.0
+I:1  action:3.1,0.9: 	0.0
+I:1  action:3.1,0.5: 	0.0
+I:1  action:2.9,0.9: 	0.0
+I:1  action:2.9,0.5: 	0.0
+I:1  action:3.0,1.0: 	0.0
+I:1  action:3.0,0.4: 	0.0
+I:1  action:3.1,1.0: 	0.0
+I:1  action:3.1,0.4: 	0.0
+I:1  action:2.9,1.0: 	0.0
+I:1  action:2.9,0.4: 	0.0
+I:1  action:3.2,0.7: 	0.0
+I:1  action:3.2,0.8: 	0.0
+I:1  action:3.2,0.6: 	0.0
+I:1  action:2.8,0.7: 	0.0
+I:1  action:2.8,0.8: 	0.0
+I:1  action:2.8,0.6: 	0.0
+I:1  action:3.2,0.9: 	0.0
+I:1  action:3.2,0.5: 	0.0
+I:1  action:2.8,0.9: 	0.0
+I:1  action:2.8,0.5: 	0.0
+I:1  action:3.2,1.0: 	0.0
+I:1  action:3.2,0.4: 	0.0
+I:1  action:2.8,1.0: 	0.0
+I:1  action:2.8,0.4: 	0.0
+I:1  action:3.3,0.7: 	0.0
+I:1  action:3.3,0.8: 	0.0
+I:1  action:3.3,0.6: 	0.0
+I:1  action:2.7,0.7: 	0.0
+I:1  action:2.7,0.8: 	0.0
+I:1  action:2.7,0.6: 	0.0
+I:1  action:3.3,0.9: 	0.0
+I:1  action:3.3,0.5: 	0.0
+I:1  action:2.7,0.9: 	0.0
+I:1  action:2.7,0.5: 	0.0
+I:1  action:3.3,1.0: 	0.0
+I:1  action:3.3,0.4: 	0.0
+I:1  action:2.7,1.0: 	0.0
+I:1  action:2.7,0.4: 	0.0
+...............Attacker's strategy................
+I:0  action:Class_1: 	0.0
+I:0  action:Class_2: 	1.0
+I:1  action:Class_1: 	0.0
+I:1  action:Class_2: 	1.0
+I:2  action:Class_1: 	0.0
+I:2  action:Class_2: 	1.0
+I:3  action:Class_1: 	0.0
+I:3  action:Class_2: 	1.0
+I:4  action:Class_1: 	0.0
+I:4  action:Class_2: 	1.0
+I:5  action:Class_1: 	0.0
+I:5  action:Class_2: 	1.0
+I:6  action:Class_1: 	0.0
+I:6  action:Class_2: 	1.0
+I:7  action:Class_1: 	0.0
+I:7  action:Class_2: 	1.0
+I:8  action:Class_1: 	0.0
+I:8  action:Class_2: 	1.0
+I:9  action:Class_1: 	1.0
+I:9  action:Class_2: 	0.0
+I:10  action:Class_1: 	0.0
+I:10  action:Class_2: 	1.0
+I:11  action:Class_1: 	1.0
+I:11  action:Class_2: 	0.0
+I:12  action:Class_1: 	0.0
+I:12  action:Class_2: 	1.0
+I:13  action:Class_1: 	1.0
+I:13  action:Class_2: 	0.0
+I:14  action:Class_1: 	0.0
+I:14  action:Class_2: 	1.0
+I:15  action:Class_1: 	1.0
+I:15  action:Class_2: 	0.0
+I:16  action:Class_1: 	0.0
+I:16  action:Class_2: 	1.0
+I:17  action:Class_1: 	1.0
+I:17  action:Class_2: 	0.0
+I:18  action:Class_1: 	0.0
+I:18  action:Class_2: 	1.0
+I:19  action:Class_1: 	1.0
+I:19  action:Class_2: 	0.0
+I:20  action:Class_1: 	0.0
+I:20  action:Class_2: 	1.0
+I:21  action:Class_1: 	1.0
+I:21  action:Class_2: 	0.0
+I:22  action:Class_1: 	1.0
+I:22  action:Class_2: 	0.0
+I:23  action:Class_1: 	1.0
+I:23  action:Class_2: 	0.0
+I:24  action:Class_1: 	0.0
+I:24  action:Class_2: 	1.0
+I:25  action:Class_1: 	0.0
+I:25  action:Class_2: 	1.0
+I:26  action:Class_1: 	0.0
+I:26  action:Class_2: 	1.0
+I:27  action:Class_1: 	1.0
+I:27  action:Class_2: 	0.0
+I:28  action:Class_1: 	1.0
+I:28  action:Class_2: 	0.0
+I:29  action:Class_1: 	1.0
+I:29  action:Class_2: 	0.0
+I:30  action:Class_1: 	0.0
+I:30  action:Class_2: 	1.0
+I:31  action:Class_1: 	1.0
+I:31  action:Class_2: 	0.0
+I:32  action:Class_1: 	1.0
+I:32  action:Class_2: 	0.0
+I:33  action:Class_1: 	1.0
+I:33  action:Class_2: 	0.0
+I:34  action:Class_1: 	0.0
+I:34  action:Class_2: 	1.0
+I:35  action:Class_1: 	1.0
+I:35  action:Class_2: 	0.0
+I:36  action:Class_1: 	1.0
+I:36  action:Class_2: 	0.0
+I:37  action:Class_1: 	1.0
+I:37  action:Class_2: 	0.0
+I:38  action:Class_1: 	0.0
+I:38  action:Class_2: 	1.0
+I:39  action:Class_1: 	0.0
+I:39  action:Class_2: 	1.0
+I:40  action:Class_1: 	0.0
+I:40  action:Class_2: 	1.0
+I:41  action:Class_1: 	1.0
+I:41  action:Class_2: 	0.0
+I:42  action:Class_1: 	1.0
+I:42  action:Class_2: 	0.0
+I:43  action:Class_1: 	1.0
+I:43  action:Class_2: 	0.0
+I:44  action:Class_1: 	0.0
+I:44  action:Class_2: 	1.0
+I:45  action:Class_1: 	1.0
+I:45  action:Class_2: 	0.0
+I:46  action:Class_1: 	1.0
+I:46  action:Class_2: 	0.0
+I:47  action:Class_1: 	1.0
+I:47  action:Class_2: 	0.0
+I:48  action:Class_1: 	0.0
+I:48  action:Class_2: 	1.0
+I:49  action:Class_1: 	0.0
+I:49  action:Class_2: 	1.0
+I:50  action:Class_1: 	0.0
+I:50  action:Class_2: 	1.0
+I:51  action:Class_1: 	0.0
+I:51  action:Class_2: 	1.0
+I:52  action:Class_1: 	0.0
+I:52  action:Class_2: 	1.0
+I:53  action:Class_1: 	0.0
+I:53  action:Class_2: 	1.0
+I:54  action:Class_1: 	0.0
+I:54  action:Class_2: 	1.0
+I:55  action:Class_1: 	0.0
+I:55  action:Class_2: 	1.0
+I:56  action:Class_1: 	0.0
+I:56  action:Class_2: 	1.0
+I:57  action:Class_1: 	0.0
+I:57  action:Class_2: 	1.0
+I:58  action:Class_1: 	0.0
+I:58  action:Class_2: 	1.0
+I:59  action:Class_1: 	0.0
+I:59  action:Class_2: 	1.0
+I:60  action:Class_1: 	0.0
+I:60  action:Class_2: 	1.0
+I:61  action:Class_1: 	0.0
+I:61  action:Class_2: 	1.0
+I:62  action:Class_1: 	0.0
+I:62  action:Class_2: 	1.0
+I:63  action:Class_1: 	0.0
+I:63  action:Class_2: 	1.0
+I:64  action:Class_1: 	0.0
+I:64  action:Class_2: 	1.0
+I:65  action:Class_1: 	0.0
+I:65  action:Class_2: 	1.0
+I:66  action:Class_1: 	0.0
+I:66  action:Class_2: 	1.0
+I:67  action:Class_1: 	0.0
+I:67  action:Class_2: 	1.0
+I:68  action:Class_1: 	0.0
+I:68  action:Class_2: 	1.0
+I:69  action:Class_1: 	0.0
+I:69  action:Class_2: 	1.0
+I:70  action:Class_1: 	0.0
+I:70  action:Class_2: 	1.0
+I:71  action:Class_1: 	0.0
+I:71  action:Class_2: 	1.0
+I:72  action:Class_1: 	0.0
+I:72  action:Class_2: 	1.0
+............... Z variables................
+I:0  action:3.2,0.9 -> I:0  action:Class_2: 	0.0
+I:0  action:3.2,1.0 -> I:1  action:Class_2: 	0.0
+I:0  action:3.2,0.8 -> I:2  action:Class_2: 	0.0
+I:0  action:3.3,0.9 -> I:3  action:Class_2: 	0.0
+I:0  action:3.3,1.0 -> I:4  action:Class_2: 	0.0
+I:0  action:3.3,0.8 -> I:5  action:Class_2: 	0.0
+I:0  action:3.1,0.9 -> I:6  action:Class_2: 	0.0
+I:0  action:3.1,1.0 -> I:7  action:Class_2: 	0.0
+I:0  action:3.1,0.8 -> I:8  action:Class_2: 	1.0
+I:0  action:3.2,1.1 -> I:9  action:Class_2: 	0.0
+I:0  action:3.2,0.7 -> I:10  action:Class_2: 	0.0
+I:0  action:3.3,1.1 -> I:11  action:Class_2: 	0.0
+I:0  action:3.3,0.7 -> I:12  action:Class_2: 	0.0
+I:0  action:3.1,1.1 -> I:13  action:Class_2: 	0.0
+I:0  action:3.1,0.7 -> I:14  action:Class_2: 	0.0
+I:0  action:3.2,1.2 -> I:15  action:Class_2: 	0.0
+I:0  action:3.2,0.6 -> I:16  action:Class_2: 	0.0
+I:0  action:3.3,1.2 -> I:17  action:Class_2: 	0.0
+I:0  action:3.3,0.6 -> I:18  action:Class_2: 	0.0
+I:0  action:3.1,1.2 -> I:19  action:Class_2: 	0.0
+I:0  action:3.1,0.6 -> I:20  action:Class_2: 	0.0
+I:0  action:3.4,0.9 -> I:21  action:Class_2: 	0.0
+I:0  action:3.4,1.0 -> I:22  action:Class_2: 	0.0
+I:0  action:3.4,0.8 -> I:23  action:Class_2: 	0.0
+I:0  action:3.0,0.9 -> I:24  action:Class_2: 	0.0
+I:0  action:3.0,1.0 -> I:25  action:Class_2: 	0.0
+I:0  action:3.0,0.8 -> I:26  action:Class_2: 	0.0
+I:0  action:3.4,1.1 -> I:27  action:Class_2: 	0.0
+I:0  action:3.4,0.7 -> I:28  action:Class_2: 	0.0
+I:0  action:3.0,1.1 -> I:29  action:Class_2: 	0.0
+I:0  action:3.0,0.7 -> I:30  action:Class_2: 	0.0
+I:0  action:3.4,1.2 -> I:31  action:Class_2: 	0.0
+I:0  action:3.4,0.6 -> I:32  action:Class_2: 	0.0
+I:0  action:3.0,1.2 -> I:33  action:Class_2: 	0.0
+I:0  action:3.0,0.6 -> I:34  action:Class_2: 	0.0
+I:0  action:3.5,0.9 -> I:35  action:Class_2: 	0.0
+I:0  action:3.5,1.0 -> I:36  action:Class_2: 	0.0
+I:0  action:3.5,0.8 -> I:37  action:Class_2: 	0.0
+I:0  action:2.9,0.9 -> I:38  action:Class_2: 	0.0
+I:0  action:2.9,1.0 -> I:39  action:Class_2: 	0.0
+I:0  action:2.9,0.8 -> I:40  action:Class_2: 	0.0
+I:0  action:3.5,1.1 -> I:41  action:Class_2: 	0.0
+I:0  action:3.5,0.7 -> I:42  action:Class_2: 	0.0
+I:0  action:2.9,1.1 -> I:43  action:Class_2: 	0.0
+I:0  action:2.9,0.7 -> I:44  action:Class_2: 	0.0
+I:0  action:3.5,1.2 -> I:45  action:Class_2: 	0.0
+I:0  action:3.5,0.6 -> I:46  action:Class_2: 	0.0
+I:0  action:2.9,1.2 -> I:47  action:Class_2: 	0.0
+I:0  action:2.9,0.6 -> I:48  action:Class_2: 	0.0
+I:1  action:3.0,0.7 -> I:30  action:Class_2: 	0.0
+I:1  action:3.0,0.8 -> I:26  action:Class_2: 	0.0
+I:1  action:3.0,0.6 -> I:34  action:Class_2: 	0.0
+I:1  action:3.1,0.7 -> I:14  action:Class_2: 	0.0
+I:1  action:3.1,0.8 -> I:8  action:Class_2: 	1.0
+I:1  action:3.1,0.6 -> I:20  action:Class_2: 	0.0
+I:1  action:2.9,0.7 -> I:44  action:Class_2: 	0.0
+I:1  action:2.9,0.8 -> I:40  action:Class_2: 	0.0
+I:1  action:2.9,0.6 -> I:48  action:Class_2: 	0.0
+I:1  action:3.0,0.9 -> I:24  action:Class_2: 	0.0
+I:1  action:3.0,0.5 -> I:49  action:Class_2: 	0.0
+I:1  action:3.1,0.9 -> I:6  action:Class_2: 	0.0
+I:1  action:3.1,0.5 -> I:50  action:Class_2: 	0.0
+I:1  action:2.9,0.9 -> I:38  action:Class_2: 	0.0
+I:1  action:2.9,0.5 -> I:51  action:Class_2: 	0.0
+I:1  action:3.0,1.0 -> I:25  action:Class_2: 	0.0
+I:1  action:3.0,0.4 -> I:52  action:Class_2: 	0.0
+I:1  action:3.1,1.0 -> I:7  action:Class_2: 	0.0
+I:1  action:3.1,0.4 -> I:53  action:Class_2: 	0.0
+I:1  action:2.9,1.0 -> I:39  action:Class_2: 	0.0
+I:1  action:2.9,0.4 -> I:54  action:Class_2: 	0.0
+I:1  action:3.2,0.7 -> I:10  action:Class_2: 	0.0
+I:1  action:3.2,0.8 -> I:2  action:Class_2: 	0.0
+I:1  action:3.2,0.6 -> I:16  action:Class_2: 	0.0
+I:1  action:2.8,0.7 -> I:55  action:Class_2: 	0.0
+I:1  action:2.8,0.8 -> I:56  action:Class_2: 	0.0
+I:1  action:2.8,0.6 -> I:57  action:Class_2: 	0.0
+I:1  action:3.2,0.9 -> I:0  action:Class_2: 	0.0
+I:1  action:3.2,0.5 -> I:58  action:Class_2: 	0.0
+I:1  action:2.8,0.9 -> I:59  action:Class_2: 	0.0
+I:1  action:2.8,0.5 -> I:60  action:Class_2: 	0.0
+I:1  action:3.2,1.0 -> I:1  action:Class_2: 	0.0
+I:1  action:3.2,0.4 -> I:61  action:Class_2: 	0.0
+I:1  action:2.8,1.0 -> I:62  action:Class_2: 	0.0
+I:1  action:2.8,0.4 -> I:63  action:Class_2: 	0.0
+I:1  action:3.3,0.7 -> I:12  action:Class_2: 	0.0
+I:1  action:3.3,0.8 -> I:5  action:Class_2: 	0.0
+I:1  action:3.3,0.6 -> I:18  action:Class_2: 	0.0
+I:1  action:2.7,0.7 -> I:64  action:Class_2: 	0.0
+I:1  action:2.7,0.8 -> I:65  action:Class_2: 	0.0
+I:1  action:2.7,0.6 -> I:66  action:Class_2: 	0.0
+I:1  action:3.3,0.9 -> I:3  action:Class_2: 	0.0
+I:1  action:3.3,0.5 -> I:67  action:Class_2: 	0.0
+I:1  action:2.7,0.9 -> I:68  action:Class_2: 	0.0
+I:1  action:2.7,0.5 -> I:69  action:Class_2: 	0.0
+I:1  action:3.3,1.0 -> I:4  action:Class_2: 	0.0
+I:1  action:3.3,0.4 -> I:70  action:Class_2: 	0.0
+I:1  action:2.7,1.0 -> I:71  action:Class_2: 	0.0
+I:1  action:2.7,0.4 -> I:72  action:Class_2: 	0.0
